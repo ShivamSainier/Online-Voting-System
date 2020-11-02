@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+</style>
+{% endblock %}
+{% block content %}
+
+<h1> home block </h1>
+<div class="container">
+    <div class="row">
+<a class="btn btn-lg btn-primary p-3 m-2" href="{{url_for('admin_login')}}">Admin</a>
+<a class="btn btn-lg btn-success p-3 m-2" href="#">User</a>
+</div>
+</div>
+{% endblock %}
