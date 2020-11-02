@@ -22,7 +22,8 @@ def admin_login():
 
 @app.route("/new_canidate")
 def new_candidate():
-    return render_template('new_candidate.html')
+    form=candidate()
+    return render_template('new_candidate.html',form=form)
 
 @app.route("/view_candidate")
 def view_candidate():
