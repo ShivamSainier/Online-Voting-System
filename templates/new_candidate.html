@@ -3,4 +3,22 @@
 {% endblock %}
 {% block content %}
 <h1>new candidate</h1>
+<div class="container">
+    <form>
+    {{form.hidden_tag()}}
+    {{form.Name.label(class="form-control-label")}}
+    {{form.Name(class="form-control")}}
+    {{form.Voter_id.label()}}
+    {{form.Voter_id(class="form-control")}}
+    {{form.address.label()}}
+    {{form.address(class="form-control")}}
+    {{form.phone.label(class="form-control-label")}}
+    {{form.phone(class="form-control")}}
+    {{form.cat.label()}}
+    {{form.cat(class="text-primary")}}
+    {{form.picture(class="form-control")}}
+    {{form.submit(class="btn btn-success btn-lg")}}
+</form>
+</div>
+</div>
 {% endblock %}
