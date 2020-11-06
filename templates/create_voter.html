@@ -2,5 +2,30 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-<h1>Create Voter</h1>
+
+<div class="container">
+    
+<form method="post" action="#">
+    <div class="p-3 border shadow p-3 mb-5 bg-white rounded">
+        <h1 class="text-muted">Create Voter</h1>
+    {{voter.hidden_tag()}}
+    {{voter.Voter_id.label(class="form-control-label")}}
+    {{voter.Voter_id(class='form-control')}}
+    {{voter.phone.label(class="form-control-label")}}
+{{voter.phone(class='form-control')}}
+{{voter.F_name.label(class="form-control-label")}}
+{{voter.F_name(class='form-control')}}
+{{voter.Age.label(class="form-control-label")}}
+{{voter.Age(class='form-control')}}
+{{voter.Gender.label(class="form-check-label")}}
+{{voter.Gender(class="form-check")}}
+{{voter.address.label(class="form-control-label")}}
+{{voter.address(class='form-control')}}
+{{voter.pincode.label(class="form-control-label")}}
+{{voter.pincode(class='form-control')}}
+<br>
+{{voter.submit(class='btn btn-success btn-sm')}}
+    </div>
+</form>
+</div>
 {% endblock %}
