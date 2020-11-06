@@ -5,10 +5,11 @@
     <form method="post" action="#">
         {{form.hidden_tag()}}
         {{form.Email.label()}}
-        {{form.Email()}}
-        {{form.Password.label()}}
-        {{form.Password()}}
-        {{form.Submit()}}
+        {{form.Email(class="form-control")}}
+        {{form.Password.label(class="form-control-label")}}
+        {{form.Password(class="form-control")}}
+        <br>
+        {{form.Submit(class="btn btn-outline-secondary btn-sm")}}
     </form>
 </div>
 {% endblock %}
