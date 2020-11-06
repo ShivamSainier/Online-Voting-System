@@ -2,9 +2,10 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-<h1>new candidate</h1>
 <div class="container">
-    <form>
+    <form method="post" action="#">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <h1 class="text-muted">Add a new candidate</h1>
     {{form.hidden_tag()}}
     {{form.Name.label(class="form-control-label")}}
     {{form.Name(class="form-control")}}
@@ -15,9 +16,10 @@
     {{form.phone.label(class="form-control-label")}}
     {{form.phone(class="form-control")}}
     {{form.cat.label()}}
-    {{form.cat(class="text-primary")}}
+    {{form.cat()}}
     {{form.picture(class="form-control")}}
     {{form.submit(class="btn btn-success btn-lg")}}
+        </div>
 </form>
 </div>
 </div>
