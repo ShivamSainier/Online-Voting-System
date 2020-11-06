@@ -14,13 +14,13 @@ class candidate(FlaskForm):
     Name=StringField('Candidate name',validators=[DataRequired()])
     Voter_id=StringField('Candidate Id',validators=[DataRequired()])
     address=TextAreaField('Address',validators=[DataRequired()])  
-    cat = RadioField('cate:', choices = ['Male', 'Female'])
+    cat = RadioField('Gender:', choices = ['Male', 'Female'])
     phone=IntegerField('Phone No',validators=[DataRequired(),Length(min=10,max=12)])
     picture=FileField('Add Picture')
 
     submit=SubmitField('Submit')
 
-class create_voter(FlaskForm):
+class c_voter(FlaskForm):
     Voter_id=StringField('voter id',validators=[DataRequired()])
     phone=IntegerField('Phone No',validators=[DataRequired(),Length(min=10,max=12)])
     F_name=StringField("Father's name",validators=[DataRequired()])
@@ -28,7 +28,7 @@ class create_voter(FlaskForm):
     Gender= RadioField('Gender:', choices = ['Male', 'Female'])
     address=TextAreaField('Address',validators=[DataRequired()])  
     pincode=IntegerField('Pincode',validators=[DataRequired(),Length(min=2,max=2)])
-    submit=StringField('Submit')
+    submit=SubmitField('Submit')
     
 
 
