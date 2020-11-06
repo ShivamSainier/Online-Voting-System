@@ -13,13 +13,37 @@
   {% endblock %}
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-success">
-        <a class="navbar-brand text-light" href="#">Vote</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-
-          <span class="navbar-toggler-icon"></span>
-        </button> 
-      
-        </nav>
+      <a class="navbar-brand" href="{{url_for('home')}}">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav  mr-auto">
+          <l1>
+            <a class="nav-link text-light" href="{{url_for('new_candidate')}}">new-candidate</a>
+          </l1>
+          <li>
+            <a class="nav-link text-light" href="{{url_for('view_candidate')}}">view-candidate</a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="{{url_for('create_voter')}}">create-voter</a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="{{url_for('update_voter')}}">update-voter</a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="{{url_for('voter_list')}}">voter-list</a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="{{url_for('voting_result')}}">voting-result</a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="{{url_for('profile')}}">profile</a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
    {% block content %}
 
