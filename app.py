@@ -29,9 +29,10 @@ def new_candidate():
 def view_candidate():
     return render_template("view_candidate.html")
 
-@app.route("/create_voter")
+@app.route("/create_voter",methods=["GET","POST"])
 def create_voter():
-    return render_template("create_voter.html")
+    voter=c_voter()
+    return render_template("create_voter.html",voter=voter)
 
 @app.route("/update_voter")
 def update_voter():
