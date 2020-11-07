@@ -29,6 +29,11 @@ class c_voter(FlaskForm):
     address=TextAreaField('Address',validators=[DataRequired()])  
     pincode=IntegerField('Pincode',validators=[DataRequired(),Length(min=2,max=2)])
     submit=SubmitField('Submit')
+
+class user(FlaskForm):
+    login=StringField("Login id",validators=[DataRequired()])
+    password=PasswordField("Password",validators=[DataRequired()])
+    Submit=SubmitField("Submit")
     
 
 
