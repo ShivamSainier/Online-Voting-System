@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <form method="post" action="#">
+        <div class="p-3 border shadow p-3 mb-5 bg-dark rounded">
+        {{user.hidden_tag()}}
+        {{user.login.label(class="form-control-label text-light")}}
+        {{user.login(class="form-control")}}
+        {{user.password.label(class="form-control-label text-light")}}
+        {{user.password(class='form-control')}}
+        <br>
+        {{user.Submit(class="btn btn-success btn-sm")}}
+        </div>
+    </form>
+</div>
+{% endblock %}
