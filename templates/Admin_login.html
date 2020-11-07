@@ -3,13 +3,15 @@
 <div class="container">
     <h1>Admin login</h1>
     <form method="post" action="#">
+        <div class="p-3 border shadow p-3 mb-5 bg-dark rounded rounded-top">
         {{form.hidden_tag()}}
-        {{form.Email.label()}}
+        {{form.Email.label(class="form-control-label text-light")}}
         {{form.Email(class="form-control")}}
-        {{form.Password.label(class="form-control-label")}}
+        {{form.Password.label(class="form-control-label text-light")}}
         {{form.Password(class="form-control")}}
         <br>
-        {{form.Submit(class="btn btn-outline-secondary btn-sm")}}
+        {{form.Submit(class="btn btn-success btn-sm")}}
+        </div>
     </form>
 </div>
 {% endblock %}
