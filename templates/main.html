@@ -8,6 +8,7 @@
 {% endblock %}
 {% block content %}
 <div class="container">
+  <div class="p-3 shadow p-3 mb-5 bg-light">
 <ul class="list-group list-group-flush p-3 border">
     <li class="list-group-item"><img src="{{url_for('static',filename='new-candidate.png')}}"  alt="New Candidate" class="img-thumbnail"><a href="{{url_for('new_candidate')}}">New Candidate</a></li>
     <li class="list-group-item"><img src="{{url_for('static',filename='view-candidate.jpg')}}"  alt="view-candidate.png" class="img-thumbnail"><a href="{{url_for('view_candidate')}}">View Candidate</a></li>
@@ -17,5 +18,6 @@
     <li class="list-group-item"><img src="{{url_for('static',filename='voting result.jpg')}}"  alt="voting result.jpg" class="img-thumbnail"><a href="{{url_for('voting_result')}}">Voting Result</a></li>
     <li class="list-group-item"><img src="{{url_for('static',filename='profile.png')}}"  alt="profile.png" class="img-thumbnail"><a href="{{url_for('profile')}}">My Profile</a></li>
   </ul>
+  </div>
 </div>
 {% endblock %}
