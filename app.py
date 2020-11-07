@@ -1,8 +1,18 @@
 from flask import Flask,render_template,redirect,url_for
 from forms import *
+from flask_sqlalchemy import SQLAlchemy
+
 
 app=Flask(__name__)
-app.secret_key="shivam"
+app.secret_key="shivam@123"
+db=SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Votingsystem.db'
+
+# Database models
+
+
+
+# Routes 
 @app.route("/home")
 @app.route("/")
 def home():
@@ -50,5 +60,9 @@ def voting_result():
 def profile():
     return render_template("profile.html")
 
+@app.route('/user_page',methods=['POST','GET'])
+def user_page():
+    use=user()
+    return render_template('user_page.html',user=use)
 if __name__=="__main__":
     app.run(debug=True)
