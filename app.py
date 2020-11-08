@@ -10,6 +10,35 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Votingsystem.db'
 
 # Database models
 
+class admin(db.Model):
+    email=db.Column(db.String(120),nullable=False,primary_key=True)
+    password=db.Column(db.String(120),nullable=False)
+    def __repr__(self):
+        return f"user('{self.email}',{self.password}')"
+
+class candidate(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    candidate_name=db.Column(db.String(120),nullable=False)
+    candidate_id=db.Column(db.String(120),nullable=False)
+    address=db.Column(db.String(200),nullable=False)
+    phone_no=db.Column(db.Integer,nullable=False)
+    gender=db.Column(db.String(10),nullable=False)
+    image_file=db.Column(db.String(120),nullable=False,default='default.jpg')
+    def __repr__(self):
+        return f"user('{self.id}',{self.candidate_name}',{self.candidate_id},{self.address},{self.phone_no},{self.gender},{self.image_file})"
+
+class voter(db.Model):
+    id=db.Column(db.Integer,primary_key=True) 
+    phone_no=db.Column(db.Integer,nullable=False)
+    father_name=db.Column(db.String(120),nullable=False)
+    age=db.Column(db.Integer,nullable=False)
+    gender=db.Column(db.String(120),nullable=False)
+    address=db.Column(db.String(500),nullable=False)
+    pincode=db.Column(db.Integer,nullable=False)
+    image=db.Column(db.String(120),nullable=False,default='default.jpg')
+    def __repr__(self):
+        return f"user('{self.id}',{self.phone_no}',{self.father_name},{self.age},{self.gender},{self.address},{self.pincode},{self.image})"
+
 
 
 # Routes 
@@ -25,10 +54,15 @@ def main():
 
 @app.route("/admin_login",methods=["GET","POST"])
 def admin_login():
-    admin=admin_form()
-    if admin.validate_on_submit():
-        return redirect(url_for('main'))
-    return render_template('Admin_login.html',form=admin)
+    form=admin_form()
+    if form.validate_on_submit():
+        data=form.Email.data
+        email=admin.query.filter_by(email=data)
+        if not email:
+            return "<h1> Incorrect email or password</h1>"
+        else:
+            return redirect(url_for('main'))
+    return render_template('Admin_login.html',form=form)
 
 @app.route("/new_canidate")
 def new_candidate():
