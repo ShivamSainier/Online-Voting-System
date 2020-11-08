@@ -3,20 +3,66 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-    <form method="post" action="#">
+    <form method="post" action="{{url_for('new_candidate')}}">
         <div class="shadow p-3 mb-5 bg-white rounded">
             <h1 class="text-muted">Add a new candidate</h1>
     {{form.hidden_tag()}}
+    <div class="form-group">
     {{form.Name.label(class="form-control-label")}}
+    {% if form.Name.errors %}
     {{form.Name(class="form-control")}}
+    <div class="invalid-feedback">
+        {% for error in form.Name.errors %}
+        <span>{{error}}</span>
+        {% endfor %}
+    </div>
+    {% else %}
+    {{form.Name(class="form-control")}}
+    {% endif %}
+    </div>
+    <div class="form-group">
     {{form.Voter_id.label()}}
+    {% if form.Voter_id.errors %}
+    {{form.Voter_id(class="form-control is-invalid")}}
+    <div class="invalid-feedback">
+        {% for error in form.Voter_id.errors %}
+        <span>{{error}}</span>
+        {% endfor%}
+    </div>
+    {% else %}
     {{form.Voter_id(class="form-control")}}
+    {% endif %}
+    </div>
+    <div class="form-group">
     {{form.address.label()}}
+    {% if form.address.errors %}
+    {{form.address(class="form-control is-invalid")}}
+    <div class="invalid-feedback">
+        {% for error in form.address.errors%}
+        <span>{{error}}</span>
+        {% endfor %}
+    </div>
+    {% else %}
     {{form.address(class="form-control")}}
+    {% endif %}
+    </div>
+    <div class="form-group">
     {{form.phone.label(class="form-control-label")}}
+    {% if form.phone.errors %}
     {{form.phone(class="form-control")}}
+    <div class="invalid-feedback">
+        {% for error in form.phone.errors %}
+        <span>{{error}}</span>
+        {% endfor%}
+    </div>
+    {% else %}
+    {{form.phone(class="form-control")}}
+    {% endif %}
+    </div>
+    <div class="form-group">
     {{form.cat.label()}}
     {{form.cat()}}
+    </div>
     {{form.picture(class="form-control")}}
     {{form.submit(class="btn btn-success btn-lg")}}
         </div>
