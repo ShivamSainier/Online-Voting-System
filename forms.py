@@ -6,28 +6,24 @@ from flask_wtf.file import FileField
 
 
 class admin_form(FlaskForm):
-    Email=StringField('E-mail',validators=[DataRequired(),Length(min=3,max=50)])
-    Password=PasswordField("Password",validators=[DataRequired(),Length(min=5,max=10)])
+    Email=StringField('Admin Id',validators=[DataRequired(),Length(min=3,max=50)])
     Submit=SubmitField("Submit")
 
-class candidate(FlaskForm):
+class candidatee(FlaskForm):
     Name=StringField('Candidate name',validators=[DataRequired(),Length(min=3,max=50)])
     Voter_id=StringField('Candidate Id',validators=[DataRequired()])
     address=TextAreaField('Address',validators=[DataRequired(),Length(min=10,max=50)])  
-    cat = RadioField('Gender:', choices = ['Male', 'Female'])
-    phone=IntegerField('Phone No',validators=[DataRequired(),Length(min=10,max=12)])
+    phone=StringField('Phone No',validators=[DataRequired()])
     picture=FileField('Add Picture')
-
     submit=SubmitField('Submit')
 
 class c_voter(FlaskForm):
     Voter_id=StringField('voter id',validators=[DataRequired()])
-    phone=IntegerField('Phone No',validators=[DataRequired(),Length(min=10,max=12)])
+    phone=StringField('Phone No',validators=[DataRequired()])
     F_name=StringField("Father's name",validators=[DataRequired()])
-    Age=IntegerField('Age',validators=[DataRequired(),Length(min=2,max=2)])
-    Gender= RadioField('Gender:', choices = ['Male', 'Female'])
+    Age=StringField('Age',validators=[DataRequired()])
     address=TextAreaField('Address',validators=[DataRequired()])  
-    pincode=IntegerField('Pincode',validators=[DataRequired(),Length(min=2,max=2)])
+    pincode=StringField('Pincode',validators=[DataRequired()])
     submit=SubmitField('Submit')
 
 class user(FlaskForm):
