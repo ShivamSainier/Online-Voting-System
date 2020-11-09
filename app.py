@@ -21,24 +21,22 @@ class candidate(db.Model):
     candidate_name=db.Column(db.String(120),nullable=False)
     candidate_id=db.Column(db.String(120),nullable=False)
     address=db.Column(db.String(200),nullable=False)
-    phone_no=db.Column(db.Integer,nullable=False)
-    gender=db.Column(db.String(10),nullable=False)
+    phone_no=db.Column(db.String(10),nullable=False)
     image_file=db.Column(db.String(120),nullable=False,default='default.jpg')
     def __repr__(self):
-        return f"user('{self.id}',{self.candidate_name}',{self.candidate_id},{self.address},{self.phone_no},{self.gender},{self.image_file})"
+        return f"user('{self.id}',{self.candidate_name}',{self.candidate_id},{self.address},{self.phone_no},{self.image_file})"
 
 class voter(db.Model):
     id=db.Column(db.Integer,primary_key=True) 
-    phone_no=db.Column(db.Integer,nullable=False)
+    phone_no=db.Column(db.String(12),nullable=False)
     father_name=db.Column(db.String(120),nullable=False)
-    age=db.Column(db.Integer,nullable=False)
-    gender=db.Column(db.String(120),nullable=False)
+    age=db.Column(db.String(10),nullable=False)
     address=db.Column(db.String(500),nullable=False)
-    pincode=db.Column(db.Integer,nullable=False)
+    pincode=db.Column(db.String(10),nullable=False)
     image=db.Column(db.String(120),nullable=False,default='default.jpg')
+    password=db.Column(db.String(120),default="user@123")
     def __repr__(self):
-        return f"user('{self.id}',{self.phone_no}',{self.father_name},{self.age},{self.gender},{self.address},{self.pincode},{self.image})"
-
+        return f"user('{self.id}','{self.password}',{self.phone_no}',{self.father_name},{self.age},{self.address},{self.pincode},{self.image})"
 
 
 # Routes 
@@ -57,16 +55,21 @@ def admin_login():
     form=admin_form()
     if form.validate_on_submit():
         data=form.Email.data
-        email=admin.query.filter_by(email=data)
+        email=admin.query.filter_by(email=data).first()
         if not email:
-            return "<h1> Incorrect email or password</h1>"
+            return render_template('Admin_login.html',form=form,message="invaid id")
         else:
             return redirect(url_for('main'))
     return render_template('Admin_login.html',form=form)
 
-@app.route("/new_canidate")
+@app.route("/new_candidate",methods=["GET","POST"])
 def new_candidate():
-    form=candidate()
+    form=candidatee()
+    if form.validate_on_submit():
+        values=candidate(candidate_name=form.Name.data,candidate_id=form.Voter_id.data,address=form.address.data,phone_no=form.phone.data)
+        db.session.add(values)
+        db.session.commit()
+        return redirect(url_for('main'))
     return render_template('new_candidate.html',form=form)
 
 @app.route("/view_candidate")
@@ -75,8 +78,13 @@ def view_candidate():
 
 @app.route("/create_voter",methods=["GET","POST"])
 def create_voter():
-    voter=c_voter()
-    return render_template("create_voter.html",voter=voter)
+    vote=c_voter()
+    if vote.validate_on_submit():
+        values=voter(phone_no=vote.phone.data,father_name=vote.F_name.data,age=vote.Age.data,address=vote.address.data,pincode=vote.pincode.data)
+        db.session.add(values)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template("create_voter.html",vote=vote)
 
 @app.route("/update_voter")
 def update_voter():
